@@ -6,13 +6,13 @@ import { Provider } from 'react-redux';
 import App from './App';
 
 // this startingPlantArray should eventually be removed
-const startingPlantArray = [
-  { id: 1, name: 'Rose' },
-  { id: 2, name: 'Tulip' },
-  { id: 3, name: 'Oak' }
-];
+// const startingPlantArray = [
+//   { id: 1, name: 'Rose' },
+//   { id: 2, name: 'Tulip' },
+//   { id: 3, name: 'Oak' }
+// ];
 
-const plantList = (state = startingPlantArray, action) => {
+const plantList = (state = [], action) => {
   switch (action.type) {
     case 'ADD_PLANT':
       return [ ...state, action.payload ]
