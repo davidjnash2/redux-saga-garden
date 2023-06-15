@@ -24,7 +24,14 @@ const NewPlantForm = () => {
             <h3>This is the form</h3>
             <pre>{JSON.stringify(newPlant)}</pre>
             <form onSubmit={addNewPlant}>
-                <input type='text' value={newPlant.name} onChange={handleNameChange} />
+                <input type='text' placeholder="NAME" value={newPlant.name} onChange={handleNameChange} />
+                <input type='text' placeholder="KINGDOM" value={newPlant.kingdom} onChange={handleNameChange} />
+                <input type='text' placeholder="CLADE" value={newPlant.clade} onChange={handleNameChange} />
+                <input type='text' placeholder="ORDER" value={newPlant.order} onChange={handleNameChange} />
+                <input type='text' placeholder="FAMILY" value={newPlant.family} onChange={handleNameChange} />
+                <input type='text' placeholder="SUBFAMILY" value={newPlant.subfamily} onChange={handleNameChange} />
+                <input type='text' placeholder="GENUS" value={newPlant.genus} onChange={handleNameChange} />
+                
                 <input type='submit' value='Add New Plant' />
             </form>
         </div>

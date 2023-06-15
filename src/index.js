@@ -12,38 +12,38 @@ import axios from 'axios';
 
 function* fetchPlants(action) {
   try {
-      console.log('fetchPlants dinged:', action);
-      // hold response from server in plantsResponse
-      const plantsResponse = yield axios.get('/api/plant');
-      // after server responds, then this generator function/saga continues
-      console.log('fetchPlants response.data is:', plantsResponse.data);
-      yield put({ type: 'SET_PLANT_LIST', payload: plantsResponse.data })
+    console.log('fetchPlants dinged:', action);
+    // hold response from server in plantsResponse
+    const plantsResponse = yield axios.get('/api/plant');
+    // after server responds, then this generator function/saga continues
+    console.log('fetchPlants response.data is:', plantsResponse.data);
+    yield put({ type: 'SET_PLANT_LIST', payload: plantsResponse.data })
   } catch (error) {
-      console.log('Error with fetchPlants!', error);
+    console.log('Error with fetchPlants!', error);
   }
 }
 
 function* postPlant(action) {
   try {
-      // send axios post to server with payload
-      yield axios.post('/api/plant', action.payload);
-      console.log('postPlant payload is:', action.payload);
-      // trigger fetchPlants saga
-      yield put({ type: 'FETCH_PLANTS' });
+    // send axios post to server with payload
+    yield axios.post('/api/plant', action.payload);
+    console.log('postPlant payload is:', action.payload);
+    // trigger fetchPlants saga
+    yield put({ type: 'FETCH_PLANTS' });
   } catch (error) {
-      console.log('Error POST-ing plant', error);
+    console.log('Error POST-ing plant', error);
   }
 }
 
 function* deletePlant(action) {
   try {
-      // send axios post to server with payload
-      yield axios.delete(`/api/plant${action.payload}`);
-      console.log('deletePlant payload is:', action.payload);
-      // trigger fetchPlants saga
-      yield put({ type: 'FETCH_PLANTS' });
+    // send axios post to server with payload
+    yield axios.delete(`/api/plant${action.payload}`);
+    console.log('deletePlant payload is:', action.payload);
+    // trigger fetchPlants saga
+    yield put({ type: 'FETCH_PLANTS' });
   } catch (error) {
-      console.log('Error DELETE-ing plant', error);
+    console.log('Error DELETE-ing plant', error);
   }
 }
 
@@ -61,7 +61,7 @@ function* rootSaga() {
 const plantList = (state = [], action) => {
   switch (action.type) {
     case 'ADD_PLANT':
-      return [ ...state, action.payload ]
+      return [...state, action.payload]
     default:
       return state;
   }
